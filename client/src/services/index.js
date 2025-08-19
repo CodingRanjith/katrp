@@ -1,0 +1,217 @@
+// New services for separate curriculum items
+export async function createVideoService(videoData) {
+  const { data } = await axiosInstance.post('/instructor/video', videoData);
+  return data;
+}
+
+export async function createQuizService(quizData) {
+  const { data } = await axiosInstance.post('/instructor/quiz', quizData);
+  return data;
+}
+
+export async function createResourceService(resourceData) {
+  const { data } = await axiosInstance.post('/instructor/resource', resourceData);
+  return data;
+}
+
+export async function createAssessmentService(assessmentData) {
+  const { data } = await axiosInstance.post('/instructor/assessment', assessmentData);
+  return data;
+}
+
+export async function createModuleService(moduleData) {
+  const { data } = await axiosInstance.post('/instructor/module', moduleData);
+  return data;
+}
+import axiosInstance from "@/api/axiosInstance";
+
+// services/auth.js or wherever this is defined
+
+// Register: must send userName, userEmail, password (min 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special char)
+export async function registerService(formData) {
+  // Optionally, validate password here before sending
+  const { data } = await axiosInstance.post("/auth/register", formData);
+  return data;
+}
+
+// Login: expects userEmail and password
+export async function loginService(formData) {
+  const { data } = await axiosInstance.post("/auth/login", formData);
+  return data;
+}
+
+// There is no /auth/check-auth in backend, so this should be implemented if needed
+// export async function checkAuthService() {
+//   const { data } = await axiosInstance.get("/auth/check-auth");
+//   return data;
+// }
+
+// Become Instructor: expects userEmail, userName, password
+export async function becomeInstructorService({
+  userName,
+  userEmail,
+  password,
+}) {
+  const { data } = await axiosInstance.post(`/auth/become-instructor`, {
+    userName,
+    userEmail,
+    password,
+  });
+  return data;
+}
+
+export async function mediaUploadService(formData, onProgress) {
+  // Let Axios/browser set the multipart headers & boundary
+  const { data } = await axiosInstance.post("/media/upload", formData, {
+    onUploadProgress: (e) => {
+      if (onProgress) {
+        onProgress(Math.round((e.loaded * 100) / e.total));
+      }
+    },
+  });
+  return data;
+}
+
+export async function mediaDeleteService(key) {
+  const { data } = await axiosInstance.delete(
+    `/media/delete/${encodeURIComponent(key)}`
+  );
+  return data;
+}
+
+export async function fetchInstructorCourseListService() {
+  const { data } = await axiosInstance.get(`/instructor/course/get`);
+
+  return data;
+}
+
+export async function addNewCourseService(courseData) {
+  const { data } = await axiosInstance.post(
+    `/instructor/course/add`,
+    courseData
+  );
+  return data;
+}
+
+export async function fetchInstructorCourseDetailsService(id) {
+  const { data } = await axiosInstance.get(
+    `/instructor/course/get/details/${id}`
+  );
+
+  return data;
+}
+
+export async function updateCourseByIdService(id, formData) {
+  const { data } = await axiosInstance.put(
+    `/instructor/course/update/${id}`,
+    formData
+  );
+
+  return data;
+}
+
+export async function mediaBulkUploadService(formData, onProgress) {
+  const { data } = await axiosInstance.post("/media/bulk-upload", formData, {
+    onUploadProgress: (e) => {
+      if (onProgress) {
+        onProgress(Math.round((e.loaded * 100) / e.total));
+      }
+    },
+  });
+  return data;
+}
+
+export async function fetchStudentViewCourseListService(query) {
+  const { data } = await axiosInstance.get(
+    `/student/course/courses?${query || ""}`
+  );
+  return data;
+}
+
+export async function fetchStudentViewCourseDetailsService(courseId) {
+  const { data } = await axiosInstance.get(
+    `/student/course/courses/${courseId}`
+  );
+  return data;
+}
+
+// This service is temporarily disabled
+export async function checkCoursePurchaseInfoService(courseId) {
+  return { success: false, message: "This API is temporarily unavailable." };
+}
+
+// Updated Razorpay Integration
+
+export async function createPaymentService(orderDetails) {
+  // Sends user, course, and pricing details to the backend to create Razorpay order
+  const { data } = await axiosInstance.post(
+    `/student/order/create`,
+    orderDetails
+  );
+
+  return data; // Contains razorpayOrderId
+}
+
+export async function capturePaymentService(paymentDetails) {
+  // Sends paymentId and orderId to capture and finalize the payment
+  const { data } = await axiosInstance.post(
+    `/student/order/capture`,
+    paymentDetails
+  );
+
+  return data; // Contains success or failure of payment capture
+}
+
+export async function fetchStudentBoughtCoursesService(studentId) {
+  const { data } = await axiosInstance.get(
+    `/student/courses-bought/get/${studentId}`
+  );
+
+  return data;
+}
+
+export async function getCurrentCourseProgressService(userId, courseId) {
+  const { data } = await axiosInstance.get(
+    `/student/course-progress/get/${userId}/${courseId}`
+  );
+
+  return data;
+}
+
+export async function markLectureAsViewedService(userId, courseId, lectureId) {
+  const { data } = await axiosInstance.post(
+    `/student/course-progress/mark-lecture-viewed`,
+    {
+      userId,
+      courseId,
+      lectureId,
+    }
+  );
+
+  return data;
+}
+
+export async function resetCourseProgressService(userId, courseId) {
+  const { data } = await axiosInstance.post(
+    `/student/course-progress/reset-progress`,
+    {
+      userId,
+      courseId,
+    }
+  );
+
+  return data;
+}
+
+export async function instructorMediaUploadService(formData, onProgress) {
+  // POST to /api/media/upload using axiosInstance
+  const { data } = await axiosInstance.post("/media/upload", formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+    onUploadProgress: (e) => {
+      if (onProgress) {
+        onProgress(Math.round((e.loaded * 100) / e.total));
+      }
+    },
+  });
+  return data;
+}
