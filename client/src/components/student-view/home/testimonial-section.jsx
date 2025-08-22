@@ -1,5 +1,19 @@
+import { useEffect } from "react";
 import { Star } from "lucide-react";
 import { FaCheckCircle } from "react-icons/fa";
+
+// Inject Sora and Poppins fonts for this component
+const testiFontStyle = `@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Sora:wght@700&display=swap');\n.testi-sora { font-family: 'Sora', sans-serif; }\n.testi-poppins { font-family: 'Poppins', sans-serif; }`;
+function useTestiFont() {
+  useEffect(() => {
+    if (!document.getElementById('testi-font-style')) {
+      const style = document.createElement('style');
+      style.id = 'testi-font-style';
+      style.innerHTML = testiFontStyle;
+      document.head.appendChild(style);
+    }
+  }, []);
+}
 
 const testimonials = [
   {
@@ -37,10 +51,11 @@ const mentors = [
 ];
 
 const TestimonialSection = () => {
+  useTestiFont();
   return (
-  <section className="relative bg-gradient-to-br from-white to-purple-50 py-32 px-6 sm:px-10 lg:px-24 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-[#fff] to-[#d3c9ed] py-32 px-6 sm:px-10 lg:px-24 overflow-hidden testi-poppins">
       {/* Background Circle */}
-  <div className="absolute w-[200px] h-[200px] bg-purple-200 rounded-full top-10 left-10 opacity-20 z-0"></div>
+  <div className="absolute w-[200px] h-[200px] bg-[#d3c9ed] rounded-full top-10 left-10 opacity-20 z-0"></div>
 
       {/* Dot Pattern */}
   <div className="absolute bottom-14 left-[250px] z-0 opacity-40">
@@ -64,13 +79,13 @@ const TestimonialSection = () => {
         {/* LEFT SIDE */}
         <div className="relative space-y-12">
           {/* Testimonial 1 */}
-          <div className="bg-white rounded-xl p-6 shadow-xl max-w-md">
+          <div className="bg-[#fff] rounded-xl p-6 shadow-xl max-w-md">
             <img
               src={testimonials[0].image}
               alt={testimonials[0].name}
               className="w-16 h-16 rounded-full mx-auto mb-4 object-cover"
             />
-            <p className="text-gray-600 text-sm text-center italic mb-4">
+            <p className="text-[#8b72cc] text-sm text-center italic mb-4 testi-poppins">
               “{testimonials[0].feedback}”
             </p>
             <div className="flex justify-center gap-1 mb-2">
@@ -81,14 +96,14 @@ const TestimonialSection = () => {
                 />
               ))}
             </div>
-            <p className="text-center font-semibold text-gray-800">
+            <p className="text-center font-semibold text-[#181818] testi-sora">
               {testimonials[0].name}
             </p>
           </div>
 
           {/* Rating Summary Box */}
-          <div className="bg-purple-600 text-white p-4 rounded-xl w-60 shadow-lg absolute -bottom-20 left-0">
-            <p className="text-lg font-bold mb-1">4.5/5.0</p>
+          <div className="bg-[#8b72cc] text-[#fff] p-4 rounded-xl w-60 shadow-lg absolute -bottom-20 left-0">
+            <p className="text-lg font-bold mb-1 testi-sora">4.5/5.0</p>
             <div className="flex gap-1 mb-1">
               {[...Array(5)].map((_, i) => (
                 <Star
@@ -97,17 +112,17 @@ const TestimonialSection = () => {
                 />
               ))}
             </div>
-            <p className="text-sm">Based on 3265 ratings</p>
+            <p className="text-sm testi-poppins">Based on 3265 ratings</p>
           </div>
 
           {/* Testimonial 2 */}
-          <div className="bg-white rounded-xl p-6 shadow-xl max-w-md ml-auto">
+          <div className="bg-[#fff] rounded-xl p-6 shadow-xl max-w-md ml-auto">
             <img
               src={testimonials[1].image}
               alt={testimonials[1].name}
               className="w-16 h-16 rounded-full mx-auto mb-4 object-cover"
             />
-            <p className="text-gray-600 text-sm text-center italic mb-4">
+            <p className="text-[#8b72cc] text-sm text-center italic mb-4 testi-poppins">
               “{testimonials[1].feedback}”
             </p>
             <div className="flex justify-center gap-1 mb-2">
@@ -118,7 +133,7 @@ const TestimonialSection = () => {
                 />
               ))}
             </div>
-            <p className="text-center font-semibold text-gray-800">
+            <p className="text-center font-semibold text-[#181818] testi-sora">
               {testimonials[1].name}
             </p>
           </div>
@@ -127,9 +142,9 @@ const TestimonialSection = () => {
         {/* RIGHT SIDE */}
         <div className="relative pt-20 lg:pt-0">
           {/* Floating Mentor Card */}
-          <div className="absolute top-60 right-0 bg-white rounded-xl shadow-lg p-4 w-72 z-20">
+          <div className="absolute top-60 right-0 bg-[#fff] rounded-xl shadow-lg p-4 w-72 z-20">
             <div className="flex justify-between items-center mb-3">
-              <h4 className="font-semibold text-black text-sm">
+              <h4 className="font-semibold text-[#181818] text-sm testi-sora">
                 100+ Verified Mentors
               </h4>
               <span className="bg-yellow-400 rounded-full p-1">
@@ -145,8 +160,8 @@ const TestimonialSection = () => {
                     className="w-8 h-8 rounded-full object-cover"
                   />
                   <div>
-                    <p className="font-semibold text-sm">{mentor.name}</p>
-                    <p className="text-xs text-gray-500">{mentor.subject}</p>
+                    <p className="font-semibold text-sm testi-sora">{mentor.name}</p>
+                    <p className="text-xs text-[#8b72cc] testi-poppins">{mentor.subject}</p>
                   </div>
                 </div>
               ))}
@@ -155,14 +170,14 @@ const TestimonialSection = () => {
 
           {/* Heading and Text */}
           <div className="max-w-xl">
-            <h2 className="text-4xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+            <h2 className="text-4xl sm:text-4xl md:text-5xl font-extrabold text-[#181818] mb-4 testi-sora">
               Some valuable feedback <br /> from our students
             </h2>
-            <p className="text-gray-600 mb-6 text-sm sm:text-base">
+            <p className="text-[#8b72cc] mb-6 text-sm sm:text-base testi-poppins">
               We’re proud to share the stories of learners who have experienced
               transformation with Kattraan. Real people. Real growth.
             </p>
-            <button className="bg-purple-600 hover:bg-purple-700 transition text-white px-6 py-2 rounded-md font-medium">
+            <button className="bg-[#8b72cc] hover:bg-[#7a5eb3] transition text-[#fff] px-6 py-2 rounded-md font-medium testi-poppins">
               View Reviews
             </button>
           </div>

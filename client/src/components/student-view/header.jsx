@@ -1,9 +1,26 @@
 import { Search, User, ShoppingCart, Globe } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "@/context/auth-context";
 import { courseCategories } from "@/config";
+// Inject custom fonts and theme colors for the header
+const headerFontStyle = `
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Sora:wght@700&display=swap');
+  .header-sora { font-family: 'Sora', sans-serif; }
+  .header-poppins { font-family: 'Poppins', sans-serif; }
+`;
+
+function useHeaderFont() {
+  useEffect(() => {
+    if (!document.getElementById('header-font-style')) {
+      const style = document.createElement('style');
+      style.id = 'header-font-style';
+      style.innerHTML = headerFontStyle;
+      document.head.appendChild(style);
+    }
+  }, []);
+}
 
 function getRandomBgColor(seed) {
   const colors = [
@@ -20,6 +37,7 @@ function getRandomBgColor(seed) {
 }
 
 function StudentViewCommonHeader() {
+  useHeaderFont();
   const navigate = useNavigate();
   const { auth, resetCredentials } = useContext(AuthContext);
   const [dropdownOpen, setDropdownOpen] = useState(null);
@@ -52,12 +70,12 @@ function StudentViewCommonHeader() {
   };
 
   return (
-    <header className="w-full sticky top-0 bg-white border-b border-gray-200 z-50">
+    <header className="w-full sticky top-0 bg-[#fff] border-b border-[#d3c9ed] z-50 header-poppins">
       <div className="max-w-[1440px] mx-auto flex items-center gap-2 px-1 py-2">
         {/* Logo */}
         <Link
           to="/home"
-          className="flex items-center text-gray-900 font-extrabold text-2xl tracking-tight mr-2"
+          className="flex items-center text-[#181818] font-extrabold text-2xl tracking-tight mr-2 header-sora"
         >
           <span className="mr-1">
             <svg
@@ -78,7 +96,7 @@ function StudentViewCommonHeader() {
               />
               <path
                 d="M8 24V8h16v16"
-                stroke="#A435F0"
+                stroke="#8b72cc"
                 strokeWidth="2"
                 strokeLinejoin="round"
               />
@@ -88,7 +106,7 @@ function StudentViewCommonHeader() {
                 width="8"
                 height="8"
                 rx="2"
-                fill="#A435F0"
+                fill="#8b72cc"
               />
             </svg>
           </span>
@@ -98,7 +116,7 @@ function StudentViewCommonHeader() {
         <div className="relative">
           <Button
             variant="ghost"
-            className="font-semibold text-gray-700 hover:text-purple-700 px-3"
+            className="font-semibold text-[#181818] hover:text-[#8b72cc] px-3 header-poppins"
             onClick={() =>
               setDropdownOpen(
                 dropdownOpen === "explore" ? null : "explore"
@@ -121,12 +139,12 @@ function StudentViewCommonHeader() {
             </svg>
           </Button>
           {dropdownOpen === "explore" && (
-            <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md p-4 z-50">
+            <div className="absolute left-0 mt-2 w-64 bg-[#fff] shadow-lg rounded-md p-4 z-50">
               <div className="grid grid-cols-1 gap-2">
                 {courseCategories.map((category) => (
                   <button
                     key={category.id}
-                    className="text-left text-sm hover:text-purple-700 transition"
+                    className="text-left text-sm hover:text-[#8b72cc] transition header-poppins"
                     onClick={() => {
                       handleNavigateToCoursesPage(category.id);
                       setDropdownOpen(null);
@@ -150,11 +168,11 @@ function StudentViewCommonHeader() {
               placeholder="Search for anything"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full border border-gray-300 bg-white rounded-full px-5 py-2 text-base focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-sm"
+              className="w-full border border-[#d3c9ed] bg-[#fff] rounded-full px-5 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#8b72cc] shadow-sm header-poppins text-[#181818]"
             />
             <button
               type="submit"
-              className="absolute right-3 top-2 text-purple-600 hover:text-purple-800"
+              className="absolute right-3 top-2 text-[#8b72cc] hover:text-[#181818]"
             >
               <Search className="w-5 h-5" />
             </button>
@@ -163,46 +181,46 @@ function StudentViewCommonHeader() {
         {/* Nav Links */}
         <Button
           variant="ghost"
-          className="font-semibold text-gray-700 hover:text-purple-700 px-3 hidden xl:inline-block"
+          className="font-semibold text-[#181818] hover:text-[#8b72cc] px-3 hidden xl:inline-block header-poppins"
           onClick={() => navigate("/pricing")}
         >
           Plans & Pricing
         </Button>
-          <Button
-            variant="ghost"
-            className="font-semibold text-gray-700 hover:text-purple-700 px-3 hidden xl:inline-block"
-            onClick={() => navigate("/business")}
-          >
-            Kattraan Business
-          </Button>
         <Button
           variant="ghost"
-          className="font-semibold text-gray-700 hover:text-purple-700 px-3 hidden xl:inline-block"
+          className="font-semibold text-[#181818] hover:text-[#8b72cc] px-3 hidden xl:inline-block header-poppins"
+          onClick={() => navigate("/business")}
+        >
+          Kattraan Business
+        </Button>
+        <Button
+          variant="ghost"
+          className="font-semibold text-[#181818] hover:text-[#8b72cc] px-3 hidden xl:inline-block header-poppins"
           onClick={() => navigate("/instructor-home")}
         >
           Teach on Kattraan
         </Button>
         {/* Cart Icon */}
-        <button className="ml-2 p-2 rounded-full hover:bg-gray-100 transition">
-          <ShoppingCart className="w-5 h-5 text-gray-700" />
+        <button className="ml-2 p-2 rounded-full hover:bg-[#d3c9ed] transition">
+          <ShoppingCart className="w-5 h-5 text-[#181818]" />
         </button>
         {/* Language Selector */}
-        <button className="ml-2 flex items-center gap-1 p-2 rounded-full hover:bg-gray-100 transition">
-          <Globe className="w-5 h-5 text-gray-700" />
-          <span className="text-sm font-medium text-gray-700">EN</span>
+        <button className="ml-2 flex items-center gap-1 p-2 rounded-full hover:bg-[#d3c9ed] transition">
+          <Globe className="w-5 h-5 text-[#181818]" />
+          <span className="text-sm font-medium text-[#181818] header-poppins">EN</span>
         </button>
         {/* Auth Buttons */}
         {!auth.authenticate ? (
           <>
             <Button
               onClick={() => navigate("/auth")}
-              className="font-semibold border border-purple-600 text-purple-700 bg-white hover:bg-purple-50 px-5 py-2 rounded-full ml-2"
+              className="font-semibold border border-[#8b72cc] text-[#8b72cc] bg-[#fff] hover:bg-[#d3c9ed] px-5 py-2 rounded-full ml-2 header-poppins"
             >
               Log in
             </Button>
             <Button
               onClick={() => navigate("/auth")}
-              className="font-semibold bg-purple-600 text-white hover:bg-purple-700 px-5 py-2 rounded-full ml-2"
+              className="font-semibold bg-[#8b72cc] text-[#fff] hover:bg-[#d3c9ed] hover:text-[#181818] px-5 py-2 rounded-full ml-2 header-poppins"
             >
               Sign up
             </Button>
@@ -210,7 +228,7 @@ function StudentViewCommonHeader() {
         ) : (
           <div className="relative ml-2">
             <div
-              className={`w-9 h-9 flex items-center justify-center rounded-full text-white font-bold cursor-pointer shadow-lg ring-2 ring-purple-200 ${bgColor}`}
+              className={`w-9 h-9 flex items-center justify-center rounded-full text-white font-bold cursor-pointer shadow-lg ring-2 ring-[#d3c9ed] ${bgColor} header-sora`}
               onClick={() =>
                 setDropdownOpen(
                   dropdownOpen === "user" ? null : "user"
@@ -220,17 +238,18 @@ function StudentViewCommonHeader() {
               {userInitial}
             </div>
             {dropdownOpen === "user" && (
-              <ul className="absolute right-0 mt-2 w-60 bg-white shadow-lg rounded-md p-3 space-y-2 z-50 text-sm">
+              <ul className="absolute right-0 mt-2 w-60 bg-[#fff] shadow-lg rounded-md p-3 space-y-2 z-50 text-sm">
                 <li className="flex items-center space-x-2">
-                  <User className="w-4 h-4" />
-                  <span className="font-semibold">{userName}</span>
+                  <User className="w-4 h-4 text-[#8b72cc]" />
+                  <span className="font-semibold header-sora text-[#181818]">{userName}</span>
                 </li>
-                <li className="text-gray-600 truncate">{userEmail}</li>
+                <li className="text-[#8b72cc] truncate header-poppins">{userEmail}</li>
                 <li className="border-t pt-2">
                   <Button
-                    className="w-full"
+                    className="w-full header-poppins"
                     variant="destructive"
                     onClick={handleLogout}
+                    style={{ backgroundColor: '#8b72cc', color: '#fff', border: 'none' }}
                   >
                     Sign Out
                   </Button>
@@ -240,7 +259,7 @@ function StudentViewCommonHeader() {
           </div>
         )}
       </div>
-    </header>
+  </header>
   );
 }
 

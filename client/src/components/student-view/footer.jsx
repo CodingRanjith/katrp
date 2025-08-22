@@ -1,12 +1,28 @@
 
+import { useEffect } from "react";
+
+// Inject Sora and Poppins fonts for this component
+const footerFontStyle = `@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Sora:wght@700&display=swap');\n.footer-sora { font-family: 'Sora', sans-serif; }\n.footer-poppins { font-family: 'Poppins', sans-serif; }`;
+function useFooterFont() {
+  useEffect(() => {
+    if (!document.getElementById('footer-font-style')) {
+      const style = document.createElement('style');
+      style.id = 'footer-font-style';
+      style.innerHTML = footerFontStyle;
+      document.head.appendChild(style);
+    }
+  }, []);
+}
+
 const Footer = () => {
+  useFooterFont();
   return (
-    <footer className="bg-[#1c1d1f] text-gray-200 pt-12 pb-0 mt-12 border-t border-gray-800">
+    <footer className="bg-[#181818] text-[#fff] pt-12 pb-0 mt-12 border-t border-[#d3c9ed] footer-poppins">
       <div className="max-w-7xl mx-auto px-4">
         {/* Top multi-column links */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           <div>
-            <h4 className="font-bold mb-3 text-white">Certifications by Skill</h4>
+            <h4 className="font-bold mb-3 text-[#181818] footer-sora">Certifications by Skill</h4>
             <ul className="space-y-1 text-sm">
               <li><a href="#" className="hover:underline">Cybersecurity Certification</a></li>
               <li><a href="#" className="hover:underline">Project Management Certification</a></li>
@@ -17,7 +33,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-3 text-white">Data Science</h4>
+            <h4 className="font-bold mb-3 text-[#181818] footer-sora">Data Science</h4>
             <ul className="space-y-1 text-sm">
               <li><a href="#" className="hover:underline">Data Science</a></li>
               <li><a href="#" className="hover:underline">Python</a></li>
@@ -27,7 +43,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-3 text-white">Communication</h4>
+            <h4 className="font-bold mb-3 text-[#181818] footer-sora">Communication</h4>
             <ul className="space-y-1 text-sm">
               <li><a href="#" className="hover:underline">Communication Skills</a></li>
               <li><a href="#" className="hover:underline">Presentation Skills</a></li>
@@ -37,7 +53,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-3 text-white">Business Analytics & Intelligence</h4>
+            <h4 className="font-bold mb-3 text-[#181818] footer-sora">Business Analytics & Intelligence</h4>
             <ul className="space-y-1 text-sm">
               <li><a href="#" className="hover:underline">Microsoft Excel</a></li>
               <li><a href="#" className="hover:underline">SQL</a></li>
@@ -49,48 +65,48 @@ const Footer = () => {
         </div>
 
         {/* Bottom grouped links */}
-        <div className="border-t border-gray-700 pt-8 pb-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+  <div className="border-t border-[#d3c9ed] pt-8 pb-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
           <div>
-            <h4 className="font-bold mb-2 text-white">About</h4>
+            <h4 className="font-bold mb-2 text-[#181818] footer-sora">About</h4>
             <ul className="space-y-1">
-                <li><a href="#" className="hover:text-purple-400">About us</a></li>
-                <li><a href="#" className="hover:text-purple-400">Careers</a></li>
-                <li><a href="#" className="hover:text-purple-400">Contact us</a></li>
-                <li><a href="#" className="hover:text-purple-400">Blog</a></li>
-                <li><a href="#" className="hover:text-purple-400">Investors</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">About us</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Careers</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Contact us</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Blog</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Investors</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-2 text-white">Discover Kattraan</h4>
+            <h4 className="font-bold mb-2 text-[#181818] footer-sora">Discover Kattraan</h4>
             <ul className="space-y-1">
-                <li><a href="#" className="hover:text-purple-400">Get the app</a></li>
-                <li><a href="#" className="hover:text-purple-400">Teach on Kattraan</a></li>
-                <li><a href="#" className="hover:text-purple-400">Plans and Pricing</a></li>
-                <li><a href="#" className="hover:text-purple-400">Affiliate</a></li>
-                <li><a href="#" className="hover:text-purple-400">Help and Support</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Get the app</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Teach on Kattraan</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Plans and Pricing</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Affiliate</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Help and Support</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-2 text-white">Kattraan for Business</h4>
+            <h4 className="font-bold mb-2 text-[#181818] footer-sora">Kattraan for Business</h4>
             <ul className="space-y-1">
-                <li><a href="#" className="hover:text-purple-400">Kattraan Business</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Kattraan Business</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-2 text-white">Legal & Accessibility</h4>
+            <h4 className="font-bold mb-2 text-[#181818] footer-sora">Legal & Accessibility</h4>
             <ul className="space-y-1">
-                <li><a href="#" className="hover:text-purple-400">Accessibility statement</a></li>
-                <li><a href="#" className="hover:text-purple-400">Privacy policy</a></li>
-                <li><a href="#" className="hover:text-purple-400">Sitemap</a></li>
-                <li><a href="#" className="hover:text-purple-400">Terms</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Accessibility statement</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Privacy policy</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Sitemap</a></li>
+                <li><a href="#" className="hover:text-[#8b72cc]">Terms</a></li>
             </ul>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-gray-700 mt-6 py-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
+        <div className="border-t border-[#d3c9ed] mt-6 py-4 flex flex-col md:flex-row justify-between items-center text-xs text-[#d3c9ed]">
             <div className="flex items-center mb-2 md:mb-0">
-              <span className="font-bold text-lg text-gray-200">Kattraan</span>
+              <span className="font-bold text-lg text-[#fff] footer-sora">Kattraan</span>
               <span className="ml-2">© {new Date().getFullYear()} Kattraan, Inc.</span>
           </div>
           <div className="flex items-center space-x-2 mt-2 md:mt-0">

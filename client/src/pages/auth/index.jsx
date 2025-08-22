@@ -1,6 +1,7 @@
+
 import CommonForm from "@/components/common-form";
 import { AuthContext } from "@/context/auth-context";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { signInFormControls, signUpFormControls } from "@/config";
 import avatar1 from "../../assets/avatar/01.jpg";
 import avatar2 from "../../assets/avatar/02.jpg";
@@ -10,8 +11,22 @@ import elementImg from "../../assets/element/02.svg";
 import Footer from "@/components/student-view/footer";
 import Header from "@/components/student-view/header";
 
+// Inject Sora and Poppins fonts for this page
+const authFontStyle = `@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Sora:wght@700&display=swap');\n.auth-sora { font-family: 'Sora', sans-serif; }\n.auth-poppins { font-family: 'Poppins', sans-serif; }`;
+function useAuthFont() {
+  useEffect(() => {
+    if (!document.getElementById('auth-font-style')) {
+      const style = document.createElement('style');
+      style.id = 'auth-font-style';
+      style.innerHTML = authFontStyle;
+      document.head.appendChild(style);
+    }
+  }, []);
+}
+
 
 function AuthPage() {
+  useAuthFont();
   const [activeTab, setActiveTab] = useState("signup");
 
   const {
@@ -61,7 +76,7 @@ function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f7f9fa]">
+  <div className="min-h-screen flex flex-col bg-[#fff] auth-poppins">
       <Header />
       <div className="flex flex-1 justify-center items-center py-8">
         <div className="w-full max-w-5xl bg-white rounded-2xl shadow-xl flex flex-col md:flex-row overflow-hidden border border-gray-200">
@@ -90,7 +105,7 @@ function AuthPage() {
           {/* Right Panel: Auth Form */}
           <div className="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-16">
             <div className="mb-8">
-              <h3 className="text-3xl font-extrabold text-gray-900 mb-2 text-left">
+              <h3 className="text-3xl font-extrabold text-[#181818] mb-2 text-left auth-sora">
                 {activeTab === "signin" ? "Sign in with email" : "Sign up with email"}
               </h3>
             </div>
@@ -105,35 +120,35 @@ function AuthPage() {
                   : !checkIfSignUpFormIsValid()
               }
               handleSubmit={activeTab === "signin" ? handleLoginUser : handleRegisterUser}
-              buttonClassName="w-full bg-[#A435F0] hover:bg-[#8710d8] text-white font-bold py-2 rounded-md mt-2"
+              buttonClassName="w-full bg-[#8b72cc] hover:bg-[#7a5eb3] text-[#fff] font-bold py-2 rounded-md mt-2 auth-poppins"
             />
             {/* Offers and tips */}
             <div className="flex items-center mt-3 mb-4">
-              <input type="checkbox" defaultChecked className="accent-purple-600 mr-2" id="offers" />
-              <label htmlFor="offers" className="text-sm text-gray-700">Send me special offers, personalized recommendations, and learning tips.</label>
+              <input type="checkbox" defaultChecked className="accent-[#8b72cc] mr-2" id="offers" />
+              <label htmlFor="offers" className="text-sm text-[#181818] auth-poppins">Send me special offers, personalized recommendations, and learning tips.</label>
             </div>
             {/* Social login */}
             <div className="flex flex-col items-center my-4">
               <div className="w-full flex items-center mb-4">
-                <div className="flex-1 border-t border-gray-200"></div>
-                <span className="mx-4 text-gray-400 text-sm">Other sign up options</span>
-                <div className="flex-1 border-t border-gray-200"></div>
+                <div className="flex-1 border-t border-[#d3c9ed]"></div>
+                <span className="mx-4 text-[#8b72cc] text-sm">Other sign up options</span>
+                <div className="flex-1 border-t border-[#d3c9ed]"></div>
               </div>
               <div className="flex gap-4 mb-2">
-                <button className="border border-gray-300 rounded-md p-2 hover:bg-gray-100 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google" className="w-6 h-6" /></button>
-                <button className="border border-gray-300 rounded-md p-2 hover:bg-gray-100 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" alt="Facebook" className="w-6 h-6" /></button>
-                <button className="border border-gray-300 rounded-md p-2 hover:bg-gray-100 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="Apple" className="w-6 h-6" /></button>
+                <button className="border border-[#d3c9ed] rounded-md p-2 hover:bg-[#d3c9ed] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google" className="w-6 h-6" /></button>
+                <button className="border border-[#d3c9ed] rounded-md p-2 hover:bg-[#d3c9ed] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" alt="Facebook" className="w-6 h-6" /></button>
+                <button className="border border-[#d3c9ed] rounded-md p-2 hover:bg-[#d3c9ed] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="Apple" className="w-6 h-6" /></button>
               </div>
-              <div className="text-xs text-gray-500 mt-2 text-center">
-                By signing up, you agree to our <a href="#" className="text-purple-600 hover:underline">Terms of Use</a> and <a href="#" className="text-purple-600 hover:underline">Privacy Policy</a>.
+              <div className="text-xs text-[#8b72cc] mt-2 text-center auth-poppins">
+                By signing up, you agree to our <a href="#" className="text-[#8b72cc] hover:underline">Terms of Use</a> and <a href="#" className="text-[#8b72cc] hover:underline">Privacy Policy</a>.
               </div>
             </div>
             {/* Switch tab */}
             <div className="text-center mt-6">
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-[#181818] auth-poppins">
                 {activeTab === "signin" ? "Don't have an account?" : "Already have an account?"}
                 <button
-                  className="ml-2 text-purple-700 hover:underline font-semibold"
+                  className="ml-2 text-[#8b72cc] hover:underline font-semibold auth-sora"
                   onClick={() => setActiveTab(activeTab === "signin" ? "signup" : "signin")}
                 >
                   {activeTab === "signin" ? "Sign up" : "Log in"}
