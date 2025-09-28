@@ -9,6 +9,8 @@ import FeaturedCourses from "@/components/student-view/home/featured-courses";
 import StatsHighlights from "@/components/student-view/home/stats-highlights";
 import BecomeInstructor from "@/components/student-view/home/become-instructor";
 import TestimonialSection from "@/components/student-view/home/testimonial-section";
+import JobGuaranteedCourses from "@/components/student-view/home/job-guaranteed-courses";
+import TrendingCourses from "@/components/student-view/home/trending-courses";
 // import CourseCategories from "@/components/student-view/home/coursecategories";
 import HeroSection from "@/components/student-view/home/hero-section";
 
@@ -94,6 +96,12 @@ function StudentHomePage() {
           </div>
         </div>
       </section>
+
+      {/* Job Guaranteed Courses */}
+      <JobGuaranteedCourses />
+      
+      {/* Trending Courses */}
+      <TrendingCourses />
 
       {/* Featured Courses */}
       <FeaturedCourses />
