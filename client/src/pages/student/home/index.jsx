@@ -12,6 +12,7 @@ import JobGuaranteedCourses from "@/components/student-view/home/job-guaranteed-
 import TrendingCourses from "@/components/student-view/home/trending-courses";
 // import CourseCategories from "@/components/student-view/home/coursecategories";
 import HeroSection from "@/components/student-view/home/hero-section";
+import professionalTeamMeeting from "@/assets/img/hero-kat.jpg";
 
 import {
   checkCoursePurchaseInfoService,
@@ -70,8 +71,6 @@ function StudentHomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-purple-50">
       <HeroSection />
-      <StatsHighlights />
-
       {/* Everything You Need to Succeed Section */}
       <section 
         className="relative mx-auto my-8 md:my-16" 
@@ -316,8 +315,618 @@ function StudentHomePage() {
 
       {/* Featured Courses */}
       <FeaturedCourses />
-      <BecomeInstructor />
-      <TestimonialSection />
+      
+      {/* Unlock Your Kattraan Journey Section */}
+      <section className="relative py-20 px-4 bg-white">
+        <div className="max-w-[1400px] mx-auto relative">
+          {/* Header */}
+          <div className="text-center mb-20">
+            <h2 
+              className="mb-8"
+              style={{ 
+                fontFamily: 'Inter',
+                fontStyle: 'normal',
+                fontWeight: 700,
+                fontSize: '32px',
+                lineHeight: '39px',
+                display: 'flex',
+                alignItems: 'center',
+                textAlign: 'center',
+                justifyContent: 'center',
+                color: '#453E75'
+              }}
+            >
+              Unlock Your Kattraan Journey in 3 Simple Steps
+            </h2>
+            <p 
+              style={{ 
+                fontFamily: 'Inter',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                fontSize: '16px',
+                lineHeight: '19px',
+                display: 'flex',
+                alignItems: 'center',
+                textAlign: 'center',
+                letterSpacing: '-0.02em',
+                color: '#000000',
+                justifyContent: 'center',
+                maxWidth: '722px',
+                margin: '0 auto'
+              }}
+            >
+              A guided path designed to take you from beginner to expert—step by step, with clarity and confidence.
+            </p>
+          </div>
+
+          {/* Steps Container */}
+          <div className="relative" style={{ height: '400px' }}>
+            {/* Step 1 - Discover */}
+            <div 
+              className="absolute"
+              style={{
+                width: '496px',
+                height: '103px',
+                left: '235px',
+                top: '0px',
+                background: '#F6F5F8',
+                boxShadow: '0px 0px 14px 5px rgba(0, 0, 0, 0.25)',
+                borderRadius: '14px'
+              }}
+            >
+              {/* Right Border - Purple */}
+              <div 
+                className="absolute"
+                style={{
+                  width: '16px',
+                  height: '103px',
+                  right: '0px',
+                  top: '0px',
+                  background: '#7B6BA8',
+                  borderRadius: '0px 14px 14px 0px'
+                }}
+              ></div>
+              <h3 
+                className="absolute"
+                style={{
+                  width: '149px',
+                  height: '29px',
+                  left: '26px',
+                  top: '9px',
+                  fontFamily: 'Inter',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '16px',
+                  lineHeight: '19px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  letterSpacing: '-0.02em',
+                  textDecorationLine: 'underline',
+                  color: '#3F3F3F'
+                }}
+              >
+                Discover
+              </h3>
+              <p 
+                className="absolute"
+                style={{
+                  width: '432px',
+                  height: '51px',
+                  left: '26px',
+                  top: '38px',
+                  fontFamily: 'Inter',
+                  fontStyle: 'normal',
+                  fontWeight: 400,
+                  fontSize: '12px',
+                  lineHeight: '15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  letterSpacing: '-0.04em',
+                  color: '#5C5C5C'
+                }}
+              >
+                Find your ideal course from our curated catalog of learning paths. Each program is carefully designed to match your goals and ignite your passions. Learn from expert mentors, gain hands-on experience, and build future-ready skills.
+              </p>
+            </div>
+
+            {/* Step 2 - Learn & Build */}
+            <div 
+              className="absolute"
+              style={{
+                width: '496px',
+                height: '103px',
+                left: '355px',
+                top: '127px',
+                background: '#F6F5F8',
+                boxShadow: '0px 0px 14px 5px rgba(0, 0, 0, 0.25)',
+                borderRadius: '14px'
+              }}
+            >
+              {/* Right Border - Blue */}
+              <div 
+                className="absolute"
+                style={{
+                  width: '16px',
+                  height: '103px',
+                  right: '0px',
+                  top: '0px',
+                  background: '#7B6BA8',
+                  borderRadius: '0px 14px 14px 0px'
+                }}
+              ></div>
+              <h3 
+                className="absolute"
+                style={{
+                  width: '149px',
+                  height: '29px',
+                  left: '26px',
+                  top: '9px',
+                  fontFamily: 'Inter',
+                  fontStyle: 'normal',
+                  fontWeight: 600,
+                  fontSize: '16px',
+                  lineHeight: '19px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  letterSpacing: '-0.02em',
+                  textDecorationLine: 'underline',
+                  color: '#3F3F3F'
+                }}
+              >
+                Learn & Build
+              </h3>
+              <p 
+                className="absolute"
+                style={{
+                  width: '376px',
+                  height: '44px',
+                  left: '26px',
+                  top: '40px',
+                  fontFamily: 'Inter',
+                  fontStyle: 'normal',
+                  fontWeight: 400,
+                  fontSize: '12px',
+                  lineHeight: '15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  letterSpacing: '-0.04em',
+                  color: '#5C5C5C'
+                }}
+              >
+                Engage with interactive content that keeps you motivated every step of the way. Experience hands-on projects that bring concepts to life with real-world applications.
+              </p>
+            </div>
+
+            {/* Step 3 - Advance Your Career */}
+            <div 
+              className="absolute"
+              style={{
+                width: '496px',
+                height: '103px',
+                left: '162px',
+                top: '254px',
+                background: '#F6F5F8',
+                boxShadow: '0px 0px 14px 5px rgba(0, 0, 0, 0.25)',
+                borderRadius: '14px'
+              }}
+            >
+              {/* Right Border - Green */}
+              <div 
+                className="absolute"
+                style={{
+                  width: '16px',
+                  height: '103px',
+                  right: '0px',
+                  top: '0px',
+                  background: '#7B6BA8',
+                  borderRadius: '0px 14px 14px 0px'
+                }}
+              ></div>
+              <h3 
+                className="absolute"
+                style={{
+                  width: '208px',
+                  height: '29px',
+                  left: '26px',
+                  top: '9px',
+                  fontFamily: 'Inter',
+                  fontStyle: 'normal',
+                  fontWeight: 600,
+                  fontSize: '16px',
+                  lineHeight: '19px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  letterSpacing: '-0.02em',
+                  textDecorationLine: 'underline',
+                  color: '#3F3F3F'
+                }}
+              >
+                Advance Your Career
+              </h3>
+              <p 
+                className="absolute"
+                style={{
+                  width: '432px',
+                  height: '51px',
+                  left: '26px',
+                  top: '38px',
+                  fontFamily: 'Inter',
+                  fontStyle: 'normal',
+                  fontWeight: 400,
+                  fontSize: '12px',
+                  lineHeight: '15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  letterSpacing: '-0.04em',
+                  color: '#5C5C5C'
+                }}
+              >
+                Earn globally recognized professional certificates that showcase your expertise. Stand out to top employers with skills that are practical, in-demand, and future-ready.
+              </p>
+            </div>
+
+            {/* Number 01 */}
+            <div 
+              className="absolute"
+              style={{
+                width: '76px',
+                height: '63px',
+                left: '731px',
+                top: '20px',
+                fontFamily: 'Inter',
+                fontStyle: 'normal',
+                fontWeight: 700,
+                fontSize: '50px',
+                lineHeight: '61px',
+                display: 'flex',
+                alignItems: 'center',
+                textAlign: 'center',
+                letterSpacing: '-0.02em',
+                background: 'linear-gradient(180deg, #3F3F3F 0%, #F6F5F8 79.33%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                justifyContent: 'center'
+              }}
+            >
+              01
+            </div>
+
+            {/* Number 02 */}
+            <div 
+              className="absolute"
+              style={{
+                width: '76px',
+                height: '63px',
+                left: '277px',
+                top: '147px',
+                fontFamily: 'Inter',
+                fontStyle: 'normal',
+                fontWeight: 700,
+                fontSize: '50px',
+                lineHeight: '61px',
+                display: 'flex',
+                alignItems: 'center',
+                textAlign: 'center',
+                letterSpacing: '-0.02em',
+                background: 'linear-gradient(180deg, #3F3F3F 0%, #F6F5F8 79.33%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                justifyContent: 'center'
+              }}
+            >
+              02
+            </div>
+
+            {/* Number 03 */}
+            <div 
+              className="absolute"
+              style={{
+                width: '76px',
+                height: '63px',
+                left: '661px',
+                top: '270px',
+                fontFamily: 'Inter',
+                fontStyle: 'normal',
+                fontWeight: 700,
+                fontSize: '50px',
+                lineHeight: '61px',
+                display: 'flex',
+                alignItems: 'center',
+                textAlign: 'center',
+                letterSpacing: '-0.02em',
+                background: 'linear-gradient(180deg, #3F3F3F 0%, #F6F5F8 79.33%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                justifyContent: 'center'
+              }}
+            >
+              03
+            </div>
+
+            {/* Image */}
+            <div 
+              className="absolute"
+              style={{
+                width: '379px',
+                height: '383px',
+                left: '901px',
+                top: '0px',
+                borderRadius: '12px',
+                boxShadow: '0px 0px 19px 6px rgba(0, 0, 0, 0.25)',
+                overflow: 'hidden'
+              }}
+            >
+              <img 
+                src={professionalTeamMeeting} 
+                alt="Professional team meeting"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* What Our Students Say Section */}
+      <section className="py-12 md:py-16 lg:py-20 px-4 bg-[#F6F5F8]">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-8 md:mb-12">
+            <h2 
+              className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#453E75] mb-3 md:mb-4"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              What Our Students Say
+            </h2>
+            <p 
+              className="text-gray-600 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              Join thousands of successful learners who have transformed their careers with our courses.
+            </p>
+          </div>
+
+          {/* Testimonials Grid - Responsive Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
+            {/* Testimonial 1 - James Wilson */}
+            <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all duration-300 h-auto">
+              <div className="flex items-start justify-between mb-3 md:mb-4">
+                <div className="text-3xl md:text-4xl text-gray-400 leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>"</div>
+                <div className="flex text-yellow-400 gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p 
+                className="text-gray-700 mb-4 md:mb-6 text-sm md:text-base leading-relaxed"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                "Outstanding courses with practical applications. The instructor feedback was invaluable, and the networking opportunities with other students led to new business partnerships. Highly recommend!"
+              </p>
+              <div className="flex items-center">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs md:text-sm font-semibold mr-3" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  JW
+                </div>
+                <div>
+                  <span className="text-gray-800 font-medium text-sm md:text-base" style={{ fontFamily: 'Inter, sans-serif' }}>James Wilson</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 2 - Maria Garcia */}
+            <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all duration-300 h-auto">
+              <div className="flex items-start justify-between mb-3 md:mb-4">
+                <div className="text-3xl md:text-4xl text-gray-400 leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>"</div>
+                <div className="flex text-yellow-400 gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p 
+                className="text-gray-700 mb-4 md:mb-6 text-sm md:text-base leading-relaxed"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                "Kattraan truly transformed my career journey. With its personalized learning path, I was able to identify my strengths and bridge my skill gaps seamlessly. The hands-on training and real-world projects gave me the confidence to step into a completely new domain."
+              </p>
+              <div className="flex items-center">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-green-500 rounded-full flex items-center justify-center text-white text-xs md:text-sm font-semibold mr-3" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  MG
+                </div>
+                <div>
+                  <span className="text-gray-800 font-medium text-sm md:text-base" style={{ fontFamily: 'Inter, sans-serif' }}>Maria Garcia</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 3 - David Kim */}
+            <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all duration-300 h-auto">
+              <div className="flex items-start justify-between mb-3 md:mb-4">
+                <div className="text-3xl md:text-4xl text-gray-400 leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>"</div>
+                <div className="flex text-yellow-400 gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p 
+                className="text-gray-700 mb-4 md:mb-6 text-sm md:text-base leading-relaxed"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                "The digital marketing course exceeded my expectations. Real-world case studies, actionable strategies, and ongoing mentor support helped me increase our conversion rates by 40% in just two months."
+              </p>
+              <div className="flex items-center">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs md:text-sm font-semibold mr-3" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  DK
+                </div>
+                <div>
+                  <span className="text-gray-800 font-medium text-sm md:text-base" style={{ fontFamily: 'Inter, sans-serif' }}>David Kim</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 4 - Sophie Chen */}
+            <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all duration-300 h-auto">
+              <div className="flex items-start justify-between mb-3 md:mb-4">
+                <div className="text-3xl md:text-4xl text-gray-400 leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>"</div>
+                <div className="flex text-yellow-400 gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p 
+                className="text-gray-700 mb-4 md:mb-6 text-sm md:text-base leading-relaxed"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                "The flexible schedule was perfect for my lifestyle. I could learn at my own pace while working full-time. The quality of content and live certification helped me start my successful freelancing career."
+              </p>
+              <div className="flex items-center">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-pink-500 rounded-full flex items-center justify-center text-white text-xs md:text-sm font-semibold mr-3" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  SC
+                </div>
+                <div>
+                  <span className="text-gray-800 font-medium text-sm md:text-base" style={{ fontFamily: 'Inter, sans-serif' }}>Sophie Chen</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 5 - Alex Thompson */}
+            <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all duration-300 h-auto">
+              <div className="flex items-start justify-between mb-3 md:mb-4">
+                <div className="text-3xl md:text-4xl text-gray-400 leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>"</div>
+                <div className="flex text-yellow-400 gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p 
+                className="text-gray-700 mb-4 md:mb-6 text-sm md:text-base leading-relaxed"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                "Urban Code completely transformed my career. With a personalized learning path and mentor support, I transitioned from marketing to software engineering in just 8 months. The hands-on projects and structured roadmap gave me confidence and clarity. Today, I stand empowered with skills that opened doors to exciting opportunities in tech."
+              </p>
+              <div className="flex items-center">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs md:text-sm font-semibold mr-3" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  AT
+                </div>
+                <div>
+                  <span className="text-gray-800 font-medium text-sm md:text-base" style={{ fontFamily: 'Inter, sans-serif' }}>Alex Thompson</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 6 - Lisa Rodriguez */}
+            <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all duration-300 h-auto">
+              <div className="flex items-start justify-between mb-3 md:mb-4">
+                <div className="text-3xl md:text-4xl text-gray-400 leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>"</div>
+                <div className="flex text-yellow-400 gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p 
+                className="text-gray-700 mb-4 md:mb-6 text-sm md:text-base leading-relaxed"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                "The Data Science track was incredibly comprehensive, covering everything from the foundational basics to advanced machine learning concepts. Each module was explained in a clear, structured, and practical manner, making even complex topics easy to grasp."
+              </p>
+              <div className="flex items-center">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-teal-500 rounded-full flex items-center justify-center text-white text-xs md:text-sm font-semibold mr-3" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  LR
+                </div>
+                <div>
+                  <span className="text-gray-800 font-medium text-sm md:text-base" style={{ fontFamily: 'Inter, sans-serif' }}>Lisa Rodriguez</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* View More Button */}
+          <div className="text-center">
+            <button 
+              className="bg-[#453E75] hover:bg-[#3A3464] text-white px-6 md:px-8 py-2 md:py-3 rounded-lg font-medium transition-colors duration-300 text-sm md:text-base"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              View more
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Stay Updated Section */}
+      <section className="py-8 md:py-12 lg:py-16 px-4 bg-[#F6F5F8]">
+        <div className="flex justify-center items-center">
+          <div 
+            className="relative bg-gradient-to-b from-[#7B6BA8] to-[#453E75] rounded-[16px] md:rounded-[20px] lg:rounded-[26px] p-4 md:p-6 lg:p-8 text-center max-w-[841px] w-full mx-2 md:mx-4 min-h-[120px] md:min-h-[140px] lg:h-[151px]"
+            style={{
+              boxShadow: '0px 0px 6.2px 2px rgba(0, 0, 0, 0.25)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <h2 
+              className="text-white text-[18px] md:text-[20px] lg:text-[24px] font-medium leading-tight mb-2 md:mb-3"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              Stay Updated
+            </h2>
+            <p 
+              className="text-white text-[12px] md:text-[13px] lg:text-[14px] font-normal leading-relaxed mb-3 md:mb-4 opacity-90 max-w-[300px] md:max-w-[400px] lg:max-w-[500px]"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              Get the latest courses, tips, and exclusive offers delivered to your inbox.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-2 md:gap-3 w-full max-w-[280px] md:max-w-[350px] lg:max-w-[400px]">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-3 md:px-4 py-2 rounded-[6px] md:rounded-[8px] border-0 outline-none text-gray-800 placeholder-gray-500 text-[12px] md:text-[13px] lg:text-[14px] font-normal focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                style={{ 
+                  fontFamily: 'Inter, sans-serif',
+                  height: '32px',
+                  '@media (min-width: 768px)': {
+                    height: '36px'
+                  }
+                }}
+              />
+              <button 
+                className="bg-[#453E75] hover:bg-[#3A3464] text-white px-4 md:px-6 py-2 rounded-[6px] md:rounded-[8px] font-medium transition-colors duration-300 whitespace-nowrap text-[12px] md:text-[13px] lg:text-[14px] min-w-[80px] md:min-w-[100px] h-[32px] md:h-[36px] flex items-center justify-center"
+                style={{ 
+                  fontFamily: 'Inter, sans-serif'
+                }}
+              >
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <Footer />
     </div>
   );
