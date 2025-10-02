@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Star, Clock, Users, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -88,49 +88,71 @@ const jobGuaranteedCourses = [
 ];
 
 const JobGuaranteedCourses = () => {
+  const scrollRef = useRef(null);
+
+
+  const handleScrollRight = () => {
+    if (scrollRef.current) {
+      const cardWidth = 320 + 24; // card width + gap (px)
+      scrollRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    }
+  };
+
+  const handleScrollLeft = () => {
+    if (scrollRef.current) {
+      const cardWidth = 320 + 24;
+      scrollRef.current.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section 
+    <section
       className="relative py-16 px-4 lg:px-8 xl:px-16"
       style={{
         background: '#FFFFFF',
         width: '100%',
         maxWidth: '1440px',
-        margin: '0 auto'
+        margin: '0 auto',
+        borderRadius: '24px',
+        border: 'none',
+        fontFamily: 'Inter, sans-serif'
       }}
     >
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-left mb-8 px-4">
-          <div 
-            className="text-gray-700 font-medium text-sm mb-3"
+          <div
+            className="mb-1"
             style={{
-              fontFamily: 'Inter, sans-serif',
-              fontWeight: 400,
-              fontSize: '14px',
-              lineHeight: '17px',
-              color: '#6B7280'
+              fontFamily: 'Inter',
+              fontWeight: 700,
+              fontSize: '32px',
+              lineHeight: '39px',
+              color: '#453E75',
+              letterSpacing: '-0.01em',
             }}
           >
             Job Guaranteed Courses
           </div>
-          <h2 
-            className="text-gray-900 mb-6"
+          <div
+            className="mb-6"
             style={{
-              fontFamily: 'Inter, sans-serif',
-              fontStyle: 'normal',
-              fontWeight: 700,
-              fontSize: 'clamp(24px, 4vw, 32px)',
-              lineHeight: '1.2',
-              color: '#111827'
+              fontFamily: 'Inter',
+              fontWeight: 400,
+              fontSize: '18px',
+              lineHeight: '22px',
+              color: '#000',
+              letterSpacing: '-0.01em',
             }}
           >
             Secure your future with 100% placement-focused training.
-          </h2>
+          </div>
         </div>
 
         {/* Course Cards */}
         <div className="relative px-4">
           <div 
+            ref={scrollRef}
             className="flex gap-6 overflow-x-auto pb-6 scroll-smooth" 
             style={{
               ...scrollbarHideStyle,
@@ -141,12 +163,14 @@ const JobGuaranteedCourses = () => {
             {jobGuaranteedCourses.map((course) => (
               <div
                 key={course.id}
-                className="flex-none w-[300px] sm:w-[320px] bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 overflow-hidden"
+                className="flex-none w-[300px] sm:w-[320px] bg-white shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
                 style={{
                   background: '#FFFFFF',
-                  border: '1px solid #E5E7EB',
-                  borderRadius: '8px',
-                  scrollSnapAlign: 'start'
+                  border: '2px solid #B5B5C3',
+                  borderRadius: '14px',
+                  scrollSnapAlign: 'start',
+                  minHeight: '448px',
+                  boxSizing: 'border-box'
                 }}
               >
                 {/* Course Image */}
@@ -155,16 +179,21 @@ const JobGuaranteedCourses = () => {
                     src={course.image}
                     alt={course.title}
                     className="w-full h-[180px] object-cover"
-                    style={{ backgroundColor: '#f8fafc' }}
+                    style={{ backgroundColor: '#f8fafc', borderRadius: '11px', marginTop: 16, marginLeft: 16, marginRight: 16, width: 'calc(100% - 32px)' }}
                   />
-                  <div className="absolute top-3 left-3">
-                    <span 
-                      className="text-white px-3 py-1 rounded text-xs font-medium"
+                  <div className="absolute top-[196px] left-6">
+                    <span
+                      className="px-4 py-1 rounded-full text-xs font-medium"
                       style={{
-                        background: '#10B981',
-                        fontFamily: 'Inter, sans-serif',
-                        fontSize: '12px',
-                        fontWeight: 500
+                        background: '#E8E0F5',
+                        color: '#161439',
+                        fontFamily: 'Inter',
+                        fontWeight: 500,
+                        fontSize: '13px',
+                        borderRadius: '31px',
+                        minWidth: '82px',
+                        display: 'inline-block',
+                        textAlign: 'center',
                       }}
                     >
                       {course.category}
@@ -175,25 +204,29 @@ const JobGuaranteedCourses = () => {
                 {/* Course Content */}
                 <div className="p-4">
                   {/* Price */}
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <span 
-                      className="font-bold text-gray-900"
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 8, marginBottom: 8 }}>
+                    <span
                       style={{
-                        fontFamily: 'Inter, sans-serif',
+                        fontFamily: 'Inter',
                         fontWeight: 700,
                         fontSize: '18px',
-                        lineHeight: '22px',
-                        color: '#111827'
+                        color: '#453E75',
+                        lineHeight: '32px',
+                        display: 'inline-block',
+                        verticalAlign: 'middle',
                       }}
                     >
                       {course.price}
                     </span>
-                    <span 
-                      className="text-gray-400 line-through"
+                    <span
                       style={{
-                        fontFamily: 'Inter, sans-serif',
+                        fontFamily: 'Inter',
+                        fontWeight: 400,
                         fontSize: '13px',
-                        color: '#9CA3AF'
+                        color: '#7F7E97',
+                        textDecoration: 'line-through',
+                        display: 'inline-block',
+                        verticalAlign: 'middle',
                       }}
                     >
                       {course.originalPrice}
@@ -201,27 +234,27 @@ const JobGuaranteedCourses = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 
-                    className="font-bold text-gray-900 mb-2"
+                  <h3
+                    className="font-bold mb-2"
                     style={{
-                      fontFamily: 'Inter, sans-serif',
+                      fontFamily: 'Inter',
                       fontWeight: 700,
-                      fontSize: '16px',
-                      lineHeight: '19px',
-                      color: '#111827'
+                      fontSize: '18px',
+                      color: '#3D3A3A',
+                      letterSpacing: '-0.04em',
+                      lineHeight: '22px',
                     }}
                   >
                     {course.title}
                   </h3>
-
-                  {/* Subtitle */}
-                  <p 
-                    className="text-gray-600 mb-4"
+                  <p
+                    className="mb-4"
                     style={{
-                      fontFamily: 'Inter, sans-serif',
+                      fontFamily: 'Inter',
+                      fontWeight: 400,
                       fontSize: '12px',
+                      color: '#616161',
                       lineHeight: '15px',
-                      color: '#6B7280'
                     }}
                   >
                     {course.subtitle}
@@ -229,29 +262,18 @@ const JobGuaranteedCourses = () => {
 
                   {/* Instructor */}
                   <div className="flex items-center mb-3">
-                    <div 
-                      className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-2"
-                      style={{ background: '#EF4444' }}
-                    >
-                      <span 
-                        className="text-white text-xs font-bold"
-                        style={{
-                          fontFamily: 'Inter, sans-serif',
-                          fontSize: '10px',
-                          fontWeight: 700,
-                          color: '#FFFFFF'
-                        }}
-                      >
-                        {course.instructor.name.charAt(0)}
-                      </span>
-                    </div>
-                    <span 
-                      className="text-gray-700 font-medium"
+                    <img
+                      src={course.instructor.avatar}
+                      alt={course.instructor.name}
+                      className="w-7 h-7 rounded-full mr-2"
+                      style={{ objectFit: 'cover', borderRadius: '50%', border: '2px solid #fff', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}
+                    />
+                    <span
                       style={{
-                        fontFamily: 'Inter, sans-serif',
-                        fontSize: '12px',
+                        fontFamily: 'Inter',
                         fontWeight: 500,
-                        color: '#374151'
+                        fontSize: '13px',
+                        color: '#525252',
                       }}
                     >
                       {course.instructor.name}
@@ -260,70 +282,36 @@ const JobGuaranteedCourses = () => {
 
                   {/* Rating */}
                   <div className="flex items-center mb-4">
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400 mr-1" />
-                    <span 
-                      className="font-bold text-gray-900 mr-1"
+                    <Star className="w-4 h-4 mr-1" style={{ color: '#F8BC24', fill: '#F8BC24' }} />
+                    <span
                       style={{
-                        fontFamily: 'Inter, sans-serif',
-                        fontSize: '12px',
-                        fontWeight: 700,
-                        color: '#111827'
+                        fontFamily: 'Inter',
+                        fontWeight: 400,
+                        fontSize: '11px',
+                        color: '#7F7E97',
+                        marginLeft: 2
                       }}
                     >
-                      {course.rating}
-                    </span>
-                    <span 
-                      className="text-gray-500"
-                      style={{
-                        fontFamily: 'Inter, sans-serif',
-                        fontSize: '12px',
-                        color: '#6B7280'
-                      }}
-                    >
-                      {course.reviews}
+                      {course.rating} {course.reviews}
                     </span>
                   </div>
 
                   {/* Course Stats */}
-                  <div 
-                    className="flex items-center justify-between text-gray-600 border-t border-gray-100 pt-3"
-                    style={{ borderTop: '1px solid #F3F4F6' }}
+                  <div
+                    className="flex items-center justify-between border-t pt-3"
+                    style={{ borderTop: '1px solid #F3F4F6', color: '#505050' }}
                   >
                     <div className="flex items-center">
-                      <Clock className="w-3 h-3 mr-1 text-gray-400" />
-                      <span 
-                        style={{
-                          fontFamily: 'Inter, sans-serif',
-                          fontSize: '11px',
-                          color: '#6B7280'
-                        }}
-                      >
-                        {course.duration}
-                      </span>
+                      <Clock className="w-4 h-4 mr-1" style={{ color: '#7F7E97' }} />
+                      <span style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '13px' }}>{course.duration}</span>
                     </div>
                     <div className="flex items-center">
-                      <Users className="w-3 h-3 mr-1 text-gray-400" />
-                      <span 
-                        style={{
-                          fontFamily: 'Inter, sans-serif',
-                          fontSize: '11px',
-                          color: '#6B7280'
-                        }}
-                      >
-                        {course.lectures}
-                      </span>
+                      <Users className="w-4 h-4 mr-1" style={{ color: '#7F7E97' }} />
+                      <span style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '13px' }}>{course.lectures}</span>
                     </div>
                     <div className="flex items-center">
-                      <Play className="w-3 h-3 mr-1 text-gray-400" />
-                      <span 
-                        style={{
-                          fontFamily: 'Inter, sans-serif',
-                          fontSize: '11px',
-                          color: '#6B7280'
-                        }}
-                      >
-                        {course.videos}
-                      </span>
+                      <Play className="w-4 h-4 mr-1" style={{ color: '#7F7E97' }} />
+                      <span style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '13px' }}>{course.videos}</span>
                     </div>
                   </div>
                 </div>
@@ -331,16 +319,36 @@ const JobGuaranteedCourses = () => {
             ))}
           </div>
 
-          {/* Navigation Arrow */}
-          <button 
-            className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 z-10 hidden lg:flex items-center justify-center"
+          {/* Navigation Arrows */}
+          <button
+            onClick={handleScrollLeft}
+            className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 z-10 flex items-center justify-center"
             style={{
               background: '#FFFFFF',
               border: '1px solid #E5E7EB',
               borderRadius: '50%',
               width: '40px',
-              height: '40px'
+              height: '40px',
+              display: 'flex'
             }}
+            aria-label="Scroll left"
+          >
+            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            onClick={handleScrollRight}
+            className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 z-10 flex items-center justify-center"
+            style={{
+              background: '#FFFFFF',
+              border: '1px solid #E5E7EB',
+              borderRadius: '50%',
+              width: '40px',
+              height: '40px',
+              display: 'flex'
+            }}
+            aria-label="Scroll right"
           >
             <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
